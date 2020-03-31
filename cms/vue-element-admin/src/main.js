@@ -19,6 +19,12 @@ import './utils/error-log' // error log
 
 import * as filters from './filters' // global filters
 
+import {checkPermission} from '@/utils/permission'
+import request from '@/utils/request'
+
+Vue.prototype.$checkPermission = checkPermission
+
+Vue.prototype.$request = request
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -27,25 +33,25 @@ import * as filters from './filters' // global filters
  * Currently MockJs will be used in the production environment,
  * please remove it before going online ! ! !
  */
-if (process.env.NODE_ENV === 'production') {
-  const { mockXHR } = require('../mock')
-  mockXHR()
-}
+// if (process.env.NODE_ENV === 'production') {
+//   const { mockXHR } = require('../mock')
+//   mockXHR()
+// }
 
 Vue.use(Element, {
-  size: Cookies.get('size') || 'medium' // set element-ui default size
+    size: Cookies.get('size') || 'medium' // set element-ui default size
 })
 
 // register global utility filters
 Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key])
+    Vue.filter(key, filters[key])
 })
 
 Vue.config.productionTip = false
 
 new Vue({
-  el: '#app',
-  router,
-  store,
-  render: h => h(App)
+    el: '#app',
+    router,
+    store,
+    render: h => h(App)
 })

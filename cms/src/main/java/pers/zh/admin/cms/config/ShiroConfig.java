@@ -1,6 +1,5 @@
 package pers.zh.admin.cms.config;
 
-import com.zh.blog.sys.shiro.UserRealm;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -12,6 +11,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.DelegatingFilterProxy;
+import pers.zh.admin.cms.sys.shiro.UserRealm;
 
 import javax.servlet.Filter;
 import java.util.LinkedHashMap;

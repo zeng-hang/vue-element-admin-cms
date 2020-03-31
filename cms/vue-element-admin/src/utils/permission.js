@@ -1,25 +1,25 @@
 import store from '@/store'
 
 /**
+ * 权限控制访问函数
  * @param {Array} value
  * @returns {Boolean}
- * @example see @/views/permission/directive.vue
  */
-export default function checkPermission(value) {
-  if (value && value instanceof Array && value.length > 0) {
-    const roles = store.getters && store.getters.roles
-    const permissionRoles = value
+export function checkPermission(value) {
+    //默认不给权限标识直接放过
+    if (value && value instanceof Array && value.length > 0) {
+        const perms = store.getters && store.getters.perms
 
-    const hasPermission = roles.some(role => {
-      return permissionRoles.includes(role)
-    })
+        //默认一个权限都没有直接放过
+        if (perms == null) return true;
 
-    if (!hasPermission) {
-      return false
+        const permissions = value
+
+        return perms.some(per => {
+            return permissions.includes(per)
+        });
+
     }
-    return true
-  } else {
-    console.error(`need roles! Like v-permission="['admin','editor']"`)
-    return false
-  }
+    return true;
 }
+

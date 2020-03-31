@@ -2,6 +2,7 @@ package pers.zh.admin.cms.sys.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import pers.zh.admin.cms.common.utlis.Query;
 import pers.zh.admin.cms.common.utlis.R;
 import pers.zh.admin.cms.common.utlis.tree.TreeModel;
@@ -32,7 +33,7 @@ public class MenuController {
      * 列表
      */
     @GetMapping("/list")
-//    @RequiresPermissions("sys:menu:list")
+    @RequiresPermissions("sys:menu:list")
     public R list(@RequestParam Map<String, Object> params) {
         IPage<Menu> page = menuService.page(new Query<Menu>().getPage(params), new QueryWrapper<>());
         return R.success().put("data", page);
@@ -42,7 +43,7 @@ public class MenuController {
      * 信息
      */
     @GetMapping("/info/{id}")
-//    @RequiresPermissions("sys:menu:info")
+    @RequiresPermissions("sys:menu:info")
     public R info(@PathVariable("id") Long id) {
         return R.success().put("data", menuService.getById(id));
     }
@@ -51,7 +52,7 @@ public class MenuController {
      * 保存
      */
     @PostMapping("/save")
-//    @RequiresPermissions("sys:menu:save")
+    @RequiresPermissions("sys:menu:save")
     public R save(@RequestBody Menu menu) {
         menuService.save(menu);
         return R.success("保存成功");
@@ -61,7 +62,7 @@ public class MenuController {
      * 修改
      */
     @PostMapping("/update")
-//    @RequiresPermissions("sys:menu:update")
+    @RequiresPermissions("sys:menu:update")
     public R update(@RequestBody Menu menu) {
         menuService.updateById(menu);
         return R.success("修改成功");
@@ -71,7 +72,7 @@ public class MenuController {
      * 删除
      */
     @DeleteMapping("/delete/{id}")
-//    @RequiresPermissions("sys:menu:delete")
+    @RequiresPermissions("sys:menu:delete")
     public R delete(@PathVariable("id") Long id) {
         menuService.removeById(id);
         return R.success("删除成功");

@@ -37,7 +37,7 @@ public class RoleController {
         IPage<Role> page = roleService.page(
                 new Query<Role>().getPage(params),
                 new QueryWrapper<Role>()
-                        .like(StringUtils.isNotBlank(String.valueOf(params.get("name"))), "name", params.get("name"))
+                        .like(StringUtils.isNotBlank((String) params.get("name")), "name", params.get("name"))
         );
         return R.success().put("data", page);
     }

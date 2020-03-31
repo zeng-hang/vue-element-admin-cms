@@ -26,6 +26,11 @@ public class Role {
     private String name;
 
     /**
+     * 角色标识
+     */
+    private String role;
+
+    /**
      * 角色描述
      */
     private String remark;

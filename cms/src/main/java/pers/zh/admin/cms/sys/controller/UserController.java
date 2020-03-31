@@ -38,10 +38,10 @@ public class UserController {
         IPage<User> page = userService.page(
                 new Query<User>().getPage(params),
                 new QueryWrapper<User>()
-                        .like(StringUtils.isNotBlank(String.valueOf(params.get("userName"))), "user_name", params.get("userName"))
-                        .like(StringUtils.isNotBlank(String.valueOf(params.get("nickname"))), "nickname", params.get("nickname"))
-                        .like(StringUtils.isNotBlank(String.valueOf(params.get("phone"))), "phone", params.get("phone"))
-                        .like(StringUtils.isNotBlank(String.valueOf(params.get("mail"))), "mail", params.get("mail"))
+                        .like(StringUtils.isNotBlank((String) params.get("userName")), "user_name", params.get("userName"))
+                        .like(StringUtils.isNotBlank((String) params.get("nickname")), "nickname", params.get("nickname"))
+                        .like(StringUtils.isNotBlank((String) params.get("phone")), "phone", params.get("phone"))
+                        .like(StringUtils.isNotBlank((String) params.get("mail")), "mail", params.get("mail"))
         );
         return R.success().put("data", page);
     }
