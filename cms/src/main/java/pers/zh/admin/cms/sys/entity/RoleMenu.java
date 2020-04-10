@@ -10,7 +10,7 @@ import lombok.Data;
  * Time: 18:50
  */
 @Data
-@TableName("SYS_ROLE_MENU")
+@TableName("sys_role_menu")
 public class RoleMenu {
     @TableId
     private Long roleMenuId;

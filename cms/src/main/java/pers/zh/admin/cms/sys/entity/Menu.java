@@ -10,7 +10,7 @@ import lombok.Data;
  * Time: 17:46
  */
 @Data
-@TableName("SYS_MENU")
+@TableName("sys_menu")
 public class Menu {
     @TableId
     private Long menuId;

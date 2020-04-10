@@ -13,7 +13,7 @@ import java.util.Date;
  * Time: 20:27
  */
 @Data
-@TableName("SYS_LOG")
+@TableName("sys_log")
 public class Log {
     @TableId
     private Long logId;

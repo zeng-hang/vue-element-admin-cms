@@ -15,7 +15,7 @@ import java.util.Set;
  * Time: 18:43
  */
 @Data
-@TableName("SYS_ROLE")
+@TableName("sys_role")
 public class Role {
     @TableId
     private Integer roleId;

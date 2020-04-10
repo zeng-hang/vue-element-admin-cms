@@ -24,7 +24,7 @@
             |-- controller      # 控制层
             |-- dao             # 数据持久层
             |-- entity          # 实体层
-            |-- service         # 
+            |-- service         # service层
     |-- resources               # 所有资源文件
         |-- mapper              # mybatis相关的mapper文件
             |-- sys             # 系统管理的mapper文件
@@ -33,6 +33,40 @@
         application-prod.yml    # 生产环境配置
 |-- vue-element-admin           # vue-element-admin的所有相关文件，目录结构可参考官网
 ```
+在cms项目包下面的目录看起来可能会很凌乱，因为同时打开java项目和前端页面里面的目录特别多，
+但是本着前后端分离原则的话可以选择将`vue-element-admin`移出该项目包，
+因为我是个人在做这个项目管理，方便区分项目文件，所以将前后端文件都放在一个项目包中，
+如果是团队，区分前后端的话，建议将项目文件进行区分，这并不会影响项目的开发。  
+关于项目的包名为什么写的这么奇怪，不是`com`开头的，
+因为是个人项目，不是团队项目，所以以`pers`开头，后面的也是类似一堆也是类似原因，
+看不习惯没关系，使用`idea`进行修改，会帮你一键修改好。
+
+### 跨域配置
+在开发环境中，使用的是代理进行跨域配置，配置文件在`vue-element-vue`目录下面的`vue.config.js`文件中，配置代码如下
+```javascript
+    devServer: {
+        port: port,
+        overlay: {
+            warnings: false,
+            errors: true
+        },
+        proxy: {
+            // change xxx-api/login => mock/login
+            // detail: https://cli.vuejs.org/config/#devserver-proxy
+            [process.env.VUE_APP_BASE_API]: {
+                target: process.env.VUE_APP_SERVICE_URL,
+                changeOrigin: true,
+                pathRewrite: {
+                    ['^' + process.env.VUE_APP_BASE_API]: ''
+                }
+            }
+        }
+    }
+```
+这里的配置完全不用修改，所以不过多的介绍，详细请前往：https://cli.vuejs.org/config/#devserver-proxy   
+需要修改的是`.evn.*`文件中的，`VUE_APP_BASE_API`和`VUE_APP_SERVICE_URL`属性  
+`VUE_APP_BASE_API`是项目的`contentPath`  
+`VUE_APP_SERVICE_URL`是项目的部署地址  
 
 #### 菜单管理相关介绍  
 - 菜单类型：  

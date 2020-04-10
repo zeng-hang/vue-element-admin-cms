@@ -12,7 +12,7 @@ import java.util.Date;
  * Time: 17:03
  */
 @Data
-@TableName("SYS_FILE")
+@TableName("sys_file")
 public class FileEntity {
     @TableId
     private Long fileId;

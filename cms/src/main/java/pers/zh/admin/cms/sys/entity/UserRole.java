@@ -10,7 +10,7 @@ import lombok.Data;
  * Time: 18:48
  */
 @Data
-@TableName("SYS_USER_ROLE")
+@TableName("sys_user_role")
 public class UserRole {
     @TableId
     private Long userRoleId;

@@ -16,7 +16,7 @@ import java.util.Set;
  * Time: 15:07
  */
 @Data
-@TableName("SYS_USER")
+@TableName("sys_user")
 public class User {
     /**
      * 主键ID自增长
